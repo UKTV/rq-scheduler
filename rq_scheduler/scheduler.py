@@ -32,6 +32,8 @@ class Scheduler(object):
             self.queue_name = queue_name
         else:
             self.queue_name = self._queue.name
+        self.scheduler_key = 'rq:scheduler:{}'.format(queue_name)
+        self.scheduled_jobs_key = 'rq:scheduler:scheduled_jobs:{}'.format(queue_name)
         self._interval = interval
         self.log = logger
         self._lock_acquired = False
